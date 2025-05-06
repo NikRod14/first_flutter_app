@@ -46,7 +46,7 @@ class MyHomePage extends StatelessWidget {
         children: [
           Text('A random idea:'),
           Text(appState.current.asLowerCase),
-          Text(pair.asLowerCase),
+          BigCard(pair: pair),
           ElevatedButton(
             onPressed: () {
               appState.getNext();
@@ -54,6 +54,27 @@ class MyHomePage extends StatelessWidget {
             child: Text('Next'),
           )
         ],
+      ),
+    );
+  }
+}
+
+class BigCard extends StatelessWidget {
+  const BigCard({
+    super.key,
+    required this.pair,
+  });
+
+  final  pair;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Card(
+      color: theme.colorScheme.primary,
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Text(pair.asLowerCase),
       ),
     );
   }
